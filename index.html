@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container-width">
+        <img src="./images/logo.png" alt="" />
+        <img src="./images/c724b29c6f0d5641529329ac7ef278c7.gif" alt="" />
+      </div>
+    </header>
+
+    <nav class="navigation">
+      <div class="container-width nav">
+        <!-- mobile -->
+        <ul class="mobile">
+          <li id="menu-toggle" style="cursor: pointer">
+            <i class="fa-solid fa-bars"></i>
+          </li>
+          <li>
+            <img src="./images/logo.png" alt="" />
+          </li>
+        </ul>
+        <!-- tablat -->
+        <ul class="list-laptop">
+          <li><i class="fa-solid fa-house"></i></li>
+          <li>កម្សាន្ដ</li>
+          <li>បចេ្ចកវិទ្យា</li>
+          <li>ជីវិតនិងសង្គម</li>
+          <li>កីឡា</li>
+          <li>Auto Talk</li>
+        </ul>
+      </div>
+    </nav>
+    <div id="show-menu-mobile" class="show-menu-mobile">
+      <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<script>
+  const menu_toggle = document.getElementById("menu-toggle");
+  const show_toggle_mobile = document.getElementById("show-menu-mobile");
+
+  let isClick = false;
+  menu_toggle.addEventListener("click", function () {
+    if (isClick) {
+      show_toggle_mobile.style.display = "none";
+      isClick = false;
+    } else {
+      show_toggle_mobile.style.display = "block";
+      document
+        .getElementById("show-menu-mobile")
+        .classList.add("animate-toggle");
+      isClick = true;
+    }
+  });
+</script>
