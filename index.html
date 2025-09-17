@@ -43,12 +43,38 @@
         </ul>
       </div>
     </nav>
+    <!-- toggle show menu mobile -->
     <div id="show-menu-mobile" class="show-menu-mobile">
       <ul>
         <li>1</li>
         <li>1</li>
         <li>1</li>
       </ul>
+    </div>
+
+    <div class="grid-hero-section container-width">
+      <div class="hero-items hero-items-1">
+        <!-- <img
+          src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
+          alt=""
+        /> -->
+        1
+      </div>
+      <div class="hero-items hero-items-1"></div>
+      <div class="hero-items" style="margin-left: 10px; padding-bottom: 5px">
+        <div
+          class="hero-items-1"
+          style="background-color: red; height: 100%"
+        ></div>
+      </div>
+      <div class="hero-items hero-items-1">4</div>
+      <div class="hero-items hero-items-1">5</div>
+      <div class="hero-items" style="margin-left: 10px; padding-top: 5px">
+        <div
+          class="hero-items-1"
+          style="background-color: red; height: 100%"
+        ></div>
+      </div>
     </div>
   </body>
 </html>
@@ -58,12 +84,16 @@
   const show_toggle_mobile = document.getElementById("show-menu-mobile");
 
   let isClick = false;
+
   menu_toggle.addEventListener("click", function () {
     if (isClick) {
-      show_toggle_mobile.style.display = "none";
+      // show_toggle_mobile.style.display = "none";
+      document
+        .getElementById("show-menu-mobile")
+        .classList.remove("animate-toggle");
       isClick = false;
     } else {
-      show_toggle_mobile.style.display = "block";
+      // show_toggle_mobile.style.display = "block";
       document
         .getElementById("show-menu-mobile")
         .classList.add("animate-toggle");

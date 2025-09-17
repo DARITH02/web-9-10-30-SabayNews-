@@ -77,7 +77,7 @@ header > div > img:last-child {
   z-index: 100;
 }
 
-/* mobile phone */
+/* mobile phone default */
 .nav > .list-laptop {
   display: none;
   align-items: center;
@@ -113,14 +113,25 @@ header > div > img:last-child {
   background-color: rgb(219, 29, 29);
 }
 
+/* toggle mobile show */
 .show-menu-mobile {
   width: 100%;
-
+  display: none;
   opacity: 0;
+  /* display: none; */
   /* height: 400px; */
 }
+/* animation toggle mobile show */
+
 .animate-toggle {
-  animation: toggle_show 0.5s alternate forwards;
+  display: block;
+  animation: toggle_show 0.5s ease forwards;
+  background-color: red;
+  position: absolute;
+}
+/* grid hero */
+.grid-hero-section {
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -139,19 +150,37 @@ header > div > img:last-child {
   .navigation {
     background-color: var(--bg-red-light);
   }
+  .grid-hero-section {
+    display: grid;
+    /*                  auto auto or 300px 300px */
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 550px 1fr 1fr;
+    /* row-gap: 10px; */
+    margin-top: 15px;
+  }
+  .hero-items {
+    height: 300px;
+    /* background-color: green; */
+  }
+  .hero-items-1 {
+    background-image: url("https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
 }
 @media (min-width: 1024px) {
 }
 
+/* animation toggle mobile show */
 @keyframes toggle_show {
   from {
     min-height: 0;
-    /* transform: translateY(-30px); */
+    opacity: 0;
     z-index: 0;
   }
   to {
-    height: 400px;
-    background-color: red;
+    /* height: 400px; */
+
     opacity: 100%;
     /* transform: translateY(0); */
     z-index: 1;
