@@ -159,7 +159,11 @@ header > div > img:last-child {
     margin-top: 15px;
   }
   .hero-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
     height: 300px;
+    color: var(--color-whith-light);
     /* background-color: green; */
   }
   .hero-items-1 {
@@ -167,9 +171,55 @@ header > div > img:last-child {
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
-  .hero-items:hover {
+  .hero-items-2 {
+    background-image: url("https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/fileSpec/68c3e5e6bd552_1757668800_medium.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .hero-items-4 {
+    background-image: url("https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/fileSpec/68c3d53a21755_1757664540_medium.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .hero-items-5 {
+    background-image: url("https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/fileSpec/68c12d2bbad2a_1757490420_medium.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .hero-hover:hover {
+    transition: all 0.3s;
     /* box-shadow: inset 0 0 200px 100px rgba(5, 5, 5, 0.98); */
     box-shadow: inset 0 -150px 120px rgba(5, 5, 5, 0.98);
+  }
+
+  .hero-hover {
+    padding: 0 15px;
+    padding-bottom: 10px;
+  }
+  .title-hero {
+    display: block;
+  }
+  .hero-hover:hover > div > .title-hero {
+    animation: title_up 0.3s ease-in-out 0.2s forwards;
+    /* animation: name duration stiming-function delay iteration-count direction fill-mode; */
+    color: red;
+  }
+  .hero-hover:hover > div > .hid-txt {
+    animation: show_hid_txt 0.8s forwards;
+    display: block;
+    z-index: -1;
+  }
+
+  .hid-txt {
+    display: none;
+    transform: translateY(30px);
+    z-index: -1;
+  }
+  .date {
+    z-index: 100;
+    background-color: transparent;
+    /* box-shadow: inset 0 -150px 120px rgba(5, 5, 5, 0.98); */
   }
 }
 @media (min-width: 1024px) {
@@ -188,5 +238,26 @@ header > div > img:last-child {
     opacity: 100%;
     /* transform: translateY(0); */
     z-index: 1;
+  }
+}
+@keyframes title_up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+@keyframes show_hid_txt {
+  from {
+    transform: translateY(30px);
+    z-index: 0;
+    display: none;
+  }
+  to {
+    transform: translateY(0);
+    /* opacity: 100%; */
+    display: block;
+    z-index: 0;
   }
 }
