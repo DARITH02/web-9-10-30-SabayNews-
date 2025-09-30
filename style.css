@@ -11,6 +11,7 @@
   --bg-red-light: #f91a2d;
   --font-face-1: 22px;
   --font-face-2: 14px;
+  --font-face-mobile-2: 16px;
   --color-whith-light: white;
   --color-gray-light: gray;
 }
@@ -129,12 +130,41 @@ header > div > img:last-child {
   background-color: red;
   position: absolute;
 }
-/* grid hero */
-.grid-hero-section {
+
+/* slid in mobile screen */
+.hid-grid-content-desktop {
   display: none;
 }
+.mobile-slid {
+  height: 280px;
+  background-color: blue;
+}
+.mobile-slid > .slid {
+  height: 100%;
+}
+.img-slid {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.img-slid img {
+  width: 100%;
+  height: 100%;
+}
+.img-slid h1 {
+  position: absolute;
+  bottom: 0;
+  font-size: var(--font-face-mobile-2);
+  color: var(--color-whith-light);
+  text-align: left;
+  padding: 10px 15px;
+}
 
+/* tablet  */
 @media (min-width: 768px) {
+  .mobile-slid {
+    display: none;
+  }
   header > div > img:last-child {
     display: block;
   }
