@@ -302,6 +302,22 @@ header > div > img:last-child {
   display: block;
   text-align: justify;
 }
+
+.grid-container-main-section {
+  height: 300px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 300px;
+  overflow-x: scroll;
+}
+.grid-item-right {
+  height: 300px;
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  grid-auto-columns: 300px;
+}
+
 /* tablet  */
 @media (min-width: 768px) {
   .line-mobile {
@@ -520,6 +536,27 @@ header > div > img:last-child {
     clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);
     background-color: red;
   }
+
+  /* grid conainer section */
+
+  .grid-container-section {
+    height: unset;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-item-left {
+    background-color: blue;
+    height: 400px;
+  }
+  .grid-item-right {
+    height: unset;
+    /* background-color: red; */
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -529,8 +566,8 @@ header > div > img:last-child {
 
   /* grid conainer section */
   .grid-container-section {
-    display: grid;
-    grid-template-rows: 450px;
+    height: unset;
+    grid-template-rows: 400px;
     grid-template-columns: 35% 1fr;
     gap: 20px;
   }
@@ -539,6 +576,7 @@ header > div > img:last-child {
   }
   .grid-item-right {
     /* background-color: red; */
+    height: unset;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(4, 1fr);
