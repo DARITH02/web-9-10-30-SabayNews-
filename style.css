@@ -216,6 +216,12 @@ header > div > img:last-child {
   grid-template-rows: unset;
 } */
 
+.style-grid {
+  padding: 30px;
+  position: relative;
+  margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 .grid-container-main-section {
   /* margin-top: 50px; */
   position: relative;
@@ -227,7 +233,6 @@ header > div > img:last-child {
   gap: 10px;
   overflow-x: scroll;
   padding: 10px 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
   background-color: whitesmoke;
 }
 .img-section {
@@ -415,6 +420,9 @@ header > div > img:last-child {
   }
 
   /* main content */
+  .style-grid {
+    margin-top: 70px;
+  }
   .grid-container-main-section {
     grid-auto-flow: unset;
     grid-auto-columns: unset;
@@ -422,10 +430,7 @@ header > div > img:last-child {
     height: unset;
     /* margin: auto; */
     background-color: unset;
-    position: relative;
-    padding: 30px;
-    margin-top: 70px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
     /* background-color: red; */
     display: grid;
 
@@ -516,11 +521,28 @@ header > div > img:last-child {
     background-color: red;
   }
 }
+
 @media (min-width: 1024px) {
   .grid-child-container-section {
     max-width: 70%;
   }
-  .grid-container-main-section {
+
+  /* grid conainer section */
+  .grid-container-section {
+    display: grid;
+    grid-template-rows: 450px;
+    grid-template-columns: 35% 1fr;
+    gap: 20px;
+  }
+  .grid-item-left {
+    background-color: blue;
+  }
+  .grid-item-right {
+    /* background-color: red; */
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
   }
 }
 
