@@ -1,315 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+  <style>
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
 
-<style>
-  swiper-container {
-    width: 100%;
-    height: 100%;
-  }
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
 
-  swiper-slide {
-    text-align: center;
-    font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    .autoplay-progress {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--swiper-theme-color);
+    }
 
-  .autoplay-progress {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: var(--swiper-theme-color);
-  }
+    .autoplay-progress svg {
+      --progress: 0;
+      position: absolute;
+      left: 0;
+      top: 0px;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      stroke-width: 4px;
+      stroke: var(--swiper-theme-color);
+      fill: none;
+      stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+      stroke-dasharray: 125.6;
+      transform: rotate(-90deg);
+    }
+  </style>
 
-  .autoplay-progress svg {
-    --progress: 0;
-    position: absolute;
-    left: 0;
-    top: 0px;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    stroke-width: 4px;
-    stroke: var(--swiper-theme-color);
-    fill: none;
-    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-    stroke-dasharray: 125.6;
-    transform: rotate(-90deg);
-  }
-</style>
+  <body>
+    <header>
+      <div class="container-width">
+        <img src="./images/logo.png" alt="" />
+        <img src="./images/c724b29c6f0d5641529329ac7ef278c7.gif" alt="" />
+      </div>
+    </header>
 
-<body>
-  <header>
-    <div class="container-width">
-      <img src="./images/logo.png" alt="" />
-      <img src="./images/c724b29c6f0d5641529329ac7ef278c7.gif" alt="" />
-    </div>
-  </header>
-
-  <nav class="navigation">
-    <div class="container-width nav">
-      <!-- mobile -->
-      <ul class="mobile">
-        <li id="menu-toggle" style="cursor: pointer">
-          <i class="fa-solid fa-bars"></i>
-        </li>
-        <li>
-          <img src="./images/logo.png" alt="" />
-        </li>
+    <nav class="navigation">
+      <div class="container-width nav">
+        <!-- mobile -->
+        <ul class="mobile">
+          <li id="menu-toggle" style="cursor: pointer">
+            <i class="fa-solid fa-bars"></i>
+          </li>
+          <li>
+            <img src="./images/logo.png" alt="" />
+          </li>
+        </ul>
+        <!-- tablat -->
+        <ul class="list-laptop">
+          <li><i class="fa-solid fa-house"></i></li>
+          <li>កម្សាន្ដ</li>
+          <li>បចេ្ចកវិទ្យា</li>
+          <li>ជីវិតនិងសង្គម</li>
+          <li>កីឡា</li>
+          <li>Auto Talk</li>
+        </ul>
+      </div>
+    </nav>
+    <!-- toggle show menu mobile -->
+    <div id="show-menu-mobile" class="show-menu-mobile">
+      <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
       </ul>
-      <!-- tablat -->
-      <ul class="list-laptop">
-        <li><i class="fa-solid fa-house"></i></li>
-        <li>កម្សាន្ដ</li>
-        <li>បចេ្ចកវិទ្យា</li>
-        <li>ជីវិតនិងសង្គម</li>
-        <li>កីឡា</li>
-        <li>Auto Talk</li>
-      </ul>
     </div>
-  </nav>
-  <!-- toggle show menu mobile -->
-  <div id="show-menu-mobile" class="show-menu-mobile">
-    <ul>
-      <li>1</li>
-      <li>1</li>
-      <li>1</li>
-    </ul>
-  </div>
-  <!-- hero section desktop -->
-  <div class="grid-hero-section container-width hid-grid-content-desktop">
-    <div class="hero-items hero-items-1 hero-hover">
-      <div>
-        <span class="title-hero">
-          CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-          រកលុយបាន ខ្ទង់លានដុល្លារ
-        </span>
-        <span class="hid-txt"> hello </span>
-        <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
-      </div>
-    </div>
-    <div class="hero-items hero-items-2 hero-hover">
-      <div>
-        <span class="title-hero">
-          CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-          រកលុយបាន ខ្ទង់លានដុល្លារ
-        </span>
-        <span class="hid-txt"> hello </span>
-        <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
-      </div>
-    </div>
-    <div class="hero-items" style="margin-left: 10px; padding-bottom: 5px">
-      <div class="" style="background-color: red; height: 100%"></div>
-    </div>
-    <div class="hero-items hero-items-4 hero-hover">
-      <div>
-        <span class="title-hero">
-          CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-          រកលុយបាន ខ្ទង់លានដុល្លារ
-        </span>
-        <span class="hid-txt"> hello </span>
-        <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
-      </div>
-    </div>
-    <div class="hero-items hero-items-5 hero-hover">
-      <div>
-        <span class="title-hero">
-          CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-          រកលុយបាន ខ្ទង់លានដុល្លារ
-        </span>
-        <span class="hid-txt"> hello </span>
-        <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
-      </div>
-    </div>
-    <div class="hero-items" style="margin-left: 10px; padding-top: 5px">
-      <div class="" style="background-color: red; height: 100%"></div>
-    </div>
-  </div>
-
-  <!-- slide mobile -->
-  <div class="mobile-slid">
-    <div class="slid">
-      <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true"
-        space-between="10" centered-slides="true" autoplay-delay="2000" autoplay-disable-on-interaction="false">
-        <swiper-slide>
-          <div class="img-slid">
-            <div class="path">ជីវិតនិងសង្គម</div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
-              alt="" />
-            <h1>
-              CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-              រកលុយបាន ខ្ទង់លានដុល្លារ
-            </h1>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="img-slid">
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
-              alt="" />
-            <h1>
-              CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-              រកលុយបាន ខ្ទង់លានដុល្លារ
-            </h1>
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="img-slid">
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
-              alt="" />
-            <h1>
-              CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
-              រកលុយបាន ខ្ទង់លានដុល្លារ
-            </h1>
-          </div>
-        </swiper-slide>
-
-        <div class="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span></span>
-        </div>
-      </swiper-container>
-    </div>
-  </div>
-
-  <div class="line-mobile"></div>
-  <main class="container-width style-grid">
-    <div class="line"></div>
-    <div class="grid-container-main-section">
-      <div class="left-section img-section hover-section">
+    <!-- hero section desktop -->
+    <div class="grid-hero-section container-width hid-grid-content-desktop">
+      <div class="hero-items hero-items-1 hero-hover">
         <div>
-          <img
-            src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-            alt="" />
+          <span class="title-hero">
+            CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+            រកលុយបាន ខ្ទង់លានដុល្លារ
+          </span>
+          <span class="hid-txt"> hello </span>
+          <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
         </div>
-        <span class="text-section">សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង Dortmund
-          ខណៈ Vinícius ស៊ុត ​Hat-Trick
-        </span>
       </div>
-      <div class="center-section img-section">centeer</div>
-      <div class="right-section img-section">right</div>
-      <section class="grid-child-container-section">
-        <div class="items hover-section">
+      <div class="hero-items hero-items-2 hero-hover">
+        <div>
+          <span class="title-hero">
+            CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+            រកលុយបាន ខ្ទង់លានដុល្លារ
+          </span>
+          <span class="hid-txt"> hello </span>
+          <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
+        </div>
+      </div>
+      <div class="hero-items" style="margin-left: 10px; padding-bottom: 5px">
+        <div class="" style="background-color: red; height: 100%"></div>
+      </div>
+      <div class="hero-items hero-items-4 hero-hover">
+        <div>
+          <span class="title-hero">
+            CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+            រកលុយបាន ខ្ទង់លានដុល្លារ
+          </span>
+          <span class="hid-txt"> hello </span>
+          <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
+        </div>
+      </div>
+      <div class="hero-items hero-items-5 hero-hover">
+        <div>
+          <span class="title-hero">
+            CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+            រកលុយបាន ខ្ទង់លានដុល្លារ
+          </span>
+          <span class="hid-txt"> hello </span>
+          <div class="date">អង្គារ, 16 កញ្ញា 2025 12:01</div>
+        </div>
+      </div>
+      <div class="hero-items" style="margin-left: 10px; padding-top: 5px">
+        <div class="" style="background-color: red; height: 100%"></div>
+      </div>
+    </div>
+
+    <!-- slide mobile -->
+    <div class="mobile-slid">
+      <div class="slid">
+        <swiper-container
+          class="mySwiper"
+          pagination="true"
+          pagination-clickable="true"
+          navigation="true"
+          space-between="10"
+          centered-slides="true"
+          autoplay-delay="2000"
+          autoplay-disable-on-interaction="false"
+        >
+          <swiper-slide>
+            <div class="img-slid">
+              <div class="path">ជីវិតនិងសង្គម</div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
+                alt=""
+              />
+              <h1>
+                CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+                រកលុយបាន ខ្ទង់លានដុល្លារ
+              </h1>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="img-slid">
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
+                alt=""
+              />
+              <h1>
+                CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+                រកលុយបាន ខ្ទង់លានដុល្លារ
+              </h1>
+            </div>
+          </swiper-slide>
+          <swiper-slide>
+            <div class="img-slid">
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/Rith.file/filenew/68c8ee2b16a58_1757998620_small.png"
+                alt=""
+              />
+              <h1>
+                CEO វ័យ ១៨ឆ្នាំ រៀនសរសេរកូដតាំងពីអាយុ ៧ឆ្នាំ ឥឡូវនេះ មាន App AI
+                រកលុយបាន ខ្ទង់លានដុល្លារ
+              </h1>
+            </div>
+          </swiper-slide>
+
+          <div class="autoplay-progress" slot="container-end">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20"></circle>
+            </svg>
+            <span></span>
+          </div>
+        </swiper-container>
+      </div>
+    </div>
+
+    <div class="line-mobile"></div>
+    <main class="container-width style-grid">
+      <div class="line"></div>
+      <div class="grid-container-main-section">
+        <div class="left-section img-section hover-section">
           <div>
             <img
               src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
+              alt=""
+            />
+          </div>
+          <span class="text-section"
+            >សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+            Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+          </span>
+        </div>
+        <div class="center-section img-section">centeer</div>
+        <div class="right-section img-section">right</div>
+        <section class="grid-child-container-section">
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+            <span class="text-sub-section">
+              សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+              Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+            </span>
+          </div>
+          <div class="items">2</div>
+          <div class="items">3</div>
+          <div class="items">4</div>
+          <div class="items">5</div>
+          <div class="items">6</div>
+          <div class="items">7</div>
+          <div class="items">8</div>
+        </section>
+      </div>
+    </main>
+
+    <div class="line-mobile"></div>
+    <main class="container-width style-grid">
+      <div class="line"></div>
+      <div class="grid-container-section">
+        <div class="grid-item-left">
+          <div>
+            <img
+              src="https://cdn.sabay.com/cdn/media.sabay.com/media/Chin-Sopheak/August-(26)/68c7e49a4bd5b_1757930640_medium.jpg"
+              alt=""
+            />
           </div>
           <span class="text-sub-section">
             សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
             Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
           </span>
         </div>
-        <div class="items">2</div>
-        <div class="items">3</div>
-        <div class="items">4</div>
-        <div class="items">5</div>
-        <div class="items">6</div>
-        <div class="items">7</div>
-        <div class="items">8</div>
-      </section>
-    </div>
-  </main>
-
-  <div class="line-mobile"></div>
-  <main class="container-width style-grid">
-    <div class="line"></div>
-    <div class="grid-container-section">
-      <div class="grid-item-left">
-
+        <div class="grid-item-right">
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+            <span class="text-sub-section">
+              សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+              Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+            </span>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+            <span class="text-sub-section">
+              សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+              Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+            </span>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="grid-item-right">
-        <div class="items hover-section">
+    </main>
+
+    <div class="line-mobile"></div>
+    <main class="container-width style-grid">
+      <div class="line"></div>
+      <div class="grid-container-section">
+        <div class="grid-item-left">
           <div>
             <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
+              src="https://cdn.sabay.com/cdn/media.sabay.com/media/Chin-Sopheak/August-(26)/68c7e49a4bd5b_1757930640_medium.jpg"
+              alt=""
+            />
           </div>
           <span class="text-sub-section">
             សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
             Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
           </span>
         </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
+        <div class="grid-item-right">
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+            <span class="text-sub-section">
+              សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+              Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+            </span>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+            <span class="text-sub-section">
+              សម្រុក​គ្នា​សា​ហា​វ​ណាស់​​៧​គ្រាប់​១​ប្រកួត​ Real Madrid និង
+              Dortmund ខណៈ Vinícius ស៊ុត ​Hat-Trick
+            </span>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="items hover-section">
+            <div>
+              <img
+                src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
+                alt=""
+              />
+            </div>
           </div>
         </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
-          </div>
-        </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
-          </div>
-        </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
-          </div>
-        </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
-          </div>
-        </div>
-        <div class="items hover-section">
-          <div>
-            <img
-              src="https://cdn.sabay.com/cdn/media.sabay.com/media/sabay-news/Srey-Sovandara/Srey-Sovandara3/67183965b726c_1729640760_medium.png"
-              alt="" />
-          </div>
-        </div>
-
       </div>
-    </div>
-
-
-  </main>
-</body>
-
+    </main>
+  </body>
 </html>
 
 <script>
@@ -334,7 +452,6 @@
     }
   });
 </script>
-
 <!-- slide -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 <script>
